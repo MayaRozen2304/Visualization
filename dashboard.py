@@ -5,6 +5,7 @@ import seaborn as sns
 import streamlit as st
 from streamlit.web import cli as stcli
 from streamlit import runtime
+import zipfile
 import sys
 
 plt.switch_backend('Agg')
