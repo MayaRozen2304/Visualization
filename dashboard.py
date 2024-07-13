@@ -27,7 +27,7 @@ def main():
     # Define the first tab content
     if tab == "Categorical Variables Distributions":
         # Select the categorical column
-        categorical_columns = ['orientation', 'drinks', 'drugs', 'smokes']
+        categorical_columns = ['orientation', 'status', 'drugs', 'smokes']
         selected_column = st.selectbox('Select a Categorical Column', categorical_columns)
 
         # Set the dynamic title for tab 1
@@ -41,7 +41,7 @@ def main():
             percent_m = (grouped_data['m'] / total_users) * 100
             percent_f = (grouped_data['f'] / total_users) * 100
 
-            plt.figure(figsize=(25, 10))
+            plt.figure(figsize=(20, 10))
 
             # Get the categories as x-axis labels
             categories = grouped_data.index
