@@ -122,7 +122,7 @@ def main():
 
         hourly_counts = data.groupby(['hour', color_by]).size().unstack(fill_value=0)
 
-        plt.figure(figsize=(20, 10))
+        plt.figure(figsize=(20, 15))
 
         for category in hourly_counts.columns:
             plt.plot(hourly_counts.index, hourly_counts[category], marker='o', linestyle='-', linewidth=2,
@@ -132,9 +132,9 @@ def main():
         plt.xlabel('Hour of Last Online',fontsize=25)
         plt.ylabel('Number of Users',fontsize=25)
         plt.xticks(hourly_counts.index,
-                   [f'{hour:02}' if hour in range(0, 10) else f'{hour}' for hour in hourly_counts.index], fontsize=15)
-        plt.yticks(fontsize=15)
-        plt.legend(title=color_by.capitalize(), bbox_to_anchor=(1.05, 1), loc='upper left',fontsize=25)
+                   [f'{hour:02}' if hour in range(0, 10) else f'{hour}' for hour in hourly_counts.index], fontsize=20)
+        plt.yticks(fontsize=20)
+        plt.legend(title=color_by.capitalize(), bbox_to_anchor=(1.05, 1), loc='upper left',fontsize=25,title_fontsize=25)
         plt.tight_layout()
         st.pyplot(plt)
 
