@@ -129,11 +129,12 @@ def main():
                      label=category)
 
         plt.title('Number of Users by Hour of Last Online',fontsize=30)
-        plt.xlabel('Hour of Last Online',fontsize=30)
-        plt.ylabel('Number of Users',fontsize=30)
+        plt.xlabel('Hour of Last Online',fontsize=25)
+        plt.ylabel('Number of Users',fontsize=25)
         plt.xticks(hourly_counts.index,
-                   [f'{hour:02}' if hour in range(0, 10) else f'{hour}' for hour in hourly_counts.index], fontsize=30)
-        plt.legend(title=color_by.capitalize(), bbox_to_anchor=(1.05, 1), loc='upper left',fontsize=30)
+                   [f'{hour:02}' if hour in range(0, 10) else f'{hour}' for hour in hourly_counts.index], fontsize=15)
+        plt.yticks(fontsize=15)
+        plt.legend(title=color_by.capitalize(), bbox_to_anchor=(1.05, 1), loc='upper left',fontsize=25)
         plt.tight_layout()
         st.pyplot(plt)
 
