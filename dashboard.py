@@ -27,7 +27,7 @@ def main():
     # Define the first tab content
     if tab == "Categorical Variables Distributions":
         # Select the categorical column
-        categorical_columns = ['orientation', 'status', 'drugs', 'smokes']
+        categorical_columns = ['orientation', 'status','drinks', 'drugs', 'smokes']
         selected_column = st.selectbox('Select a Categorical Column', categorical_columns)
 
         # Set the dynamic title for tab 1
@@ -55,9 +55,16 @@ def main():
 
             for i, category in enumerate(categories):
                 plt.text(i, grouped_data.loc[category, 'm'] + 1,
-                         f"{grouped_data.loc[category, 'm']} ({percent_m.loc[category]:.1f}%)", ha='center', va='bottom',fontsize=20)
+                         f"{percent_m.loc[category]:.1f}%", ha='center', va='bottom',fontsize=20)
                 plt.text(i + bar_width, grouped_data.loc[category, 'f'] + 1,
-                         f"{grouped_data.loc[category, 'f']} ({percent_f.loc[category]:.1f}%)", ha='center', va='bottom',fontsize=20)
+                         f"{percent_f.loc[category]:.1f}%", ha='center', va='bottom',fontsize=20)
+
+
+            # for i, category in enumerate(categories):
+            #     plt.text(i, grouped_data.loc[category, 'm'] + 1,
+            #              f"{grouped_data.loc[category, 'm']} ({percent_m.loc[category]:.1f}%)", ha='center', va='bottom',fontsize=20)
+            #     plt.text(i + bar_width, grouped_data.loc[category, 'f'] + 1,
+            #              f"{grouped_data.loc[category, 'f']} ({percent_f.loc[category]:.1f}%)", ha='center', va='bottom',fontsize=20)
 
             plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=40)
             plt.xlabel(selected_column.capitalize(), fontsize=20)
