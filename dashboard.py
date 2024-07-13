@@ -66,12 +66,12 @@ def main():
             #     plt.text(i + bar_width, grouped_data.loc[category, 'f'] + 1,
             #              f"{grouped_data.loc[category, 'f']} ({percent_f.loc[category]:.1f}%)", ha='center', va='bottom',fontsize=20)
 
-            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=30)
-            plt.xlabel(selected_column.capitalize(), fontsize=20)
-            plt.ylabel('Number of Users', fontsize=20)
-            plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45,fontsize=20)
-            plt.yticks(fontsize=20)
-            plt.legend(fontsize=20)
+            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=35)
+            plt.xlabel(selected_column.capitalize(), fontsize=25)
+            plt.ylabel('Number of Users', fontsize=25)
+            plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45,fontsize=25)
+            plt.yticks(fontsize=25)
+            plt.legend(fontsize=25)
             plt.tight_layout()
             st.pyplot(plt)
         else:
@@ -128,7 +128,7 @@ def main():
             plt.plot(hourly_counts.index, hourly_counts[category], marker='o', linestyle='-', linewidth=2,
                      label=category)
 
-        plt.title('Number of Users by Hour of Last Online',fontsize=30)
+        plt.title('Number of Users by Hour of Last Online',fontsize=35)
         plt.xlabel('Hour of Last Online',fontsize=25)
         plt.ylabel('Number of Users',fontsize=25)
         plt.xticks(hourly_counts.index,
