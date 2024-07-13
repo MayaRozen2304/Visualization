@@ -92,22 +92,50 @@ def main():
         plt.tight_layout()
         st.pyplot(fig)
 
+    # elif tab == "User Intents":
+
+    #     data["Profile"] = data[["essay0", "essay1", "essay2", "essay3", "essay4",
+    #                             "essay5", "essay6", "essay7", "essay8", "essay9"]].astype(str).agg(' '.join, axis=1)
+    #     text = ' '.join(data["Profile"].astype(str))
+
+    #     specific_words = ["kind", "funny", "intelligent", "casual", "hook", "love",
+    #                       "fun", "adventurous", "ambitious", "honest", "loyal"]
+
+    #     word_freq = {word: text.count(word) for word in specific_words}
+    #     wordcloud = WordCloud(max_words=11, background_color="white").generate_from_frequencies(word_freq)
+
+    #     plt.figure(figsize=(8, 5))
+    #     plt.title('Word Frequency in User Descriptions', pad=20)  # Adjust 'pad' for title spacing
+    #     plt.imshow(wordcloud, interpolation='bilinear')
+    #     plt.axis("off")
+    #     plt.tight_layout()
+    #     st.pyplot(plt)
+
     elif tab == "User Intents":
 
         data["Profile"] = data[["essay0", "essay1", "essay2", "essay3", "essay4",
-                                "essay5", "essay6", "essay7", "essay8", "essay9"]].astype(str).agg(' '.join, axis=1)
+                            "essay5", "essay6", "essay7", "essay8", "essay9"]].astype(str).agg(' '.join, axis=1)
         text = ' '.join(data["Profile"].astype(str))
 
         specific_words = ["kind", "funny", "intelligent", "casual", "hook", "love",
-                          "fun", "adventurous", "ambitious", "honest", "loyal"]
-
+                      "fun", "adventurous", "ambitious", "honest", "loyal"]
+    
         word_freq = {word: text.count(word) for word in specific_words}
         wordcloud = WordCloud(max_words=11, background_color="white").generate_from_frequencies(word_freq)
-
+    
         plt.figure(figsize=(8, 5))
         plt.title('Word Frequency in User Descriptions', pad=20)  # Adjust 'pad' for title spacing
         plt.imshow(wordcloud, interpolation='bilinear')
         plt.axis("off")
+    
+        # Add word frequencies
+        for word, freq in word_freq.items():
+            # Find the position of the word in the word cloud
+            positions = wordcloud.layout_
+            for (word_position, word_freq, font_size, position, orientation, color) in positions:
+                if word == word_position:
+                    plt.text(position[0], position[1], f'{word} ({freq})', fontsize=font_size, color=color, ha='center', va='center')
+    
         plt.tight_layout()
         st.pyplot(plt)
 
