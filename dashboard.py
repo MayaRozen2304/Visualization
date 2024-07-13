@@ -115,7 +115,7 @@ def main():
         st.header('User Activity Trends')
 
         # Move the dropdown into the main plot area
-        color_by = st.selectbox('Color By', ['orientation', 'sex'])
+        color_by = st.selectbox('Select a Categorical Column', ['orientation', 'sex'])
 
         data['hour'] = data['last_online'].apply(lambda x: '0' if x.split('-')[3] == '00' else x.split('-')[3])
         data['hour'] = pd.to_numeric(data['hour'])
@@ -128,12 +128,12 @@ def main():
             plt.plot(hourly_counts.index, hourly_counts[category], marker='o', linestyle='-', linewidth=2,
                      label=category)
 
-        plt.title('Number of Users by Hour of Last Online')
-        plt.xlabel('Hour of Last Online')
-        plt.ylabel('Number of Users')
+        plt.title('Number of Users by Hour of Last Online',fontsize=30)
+        plt.xlabel('Hour of Last Online',fontsize=20)
+        plt.ylabel('Number of Users',fontsize=20)
         plt.xticks(hourly_counts.index,
-                   [f'{hour:02}' if hour in range(0, 10) else f'{hour}' for hour in hourly_counts.index], fontsize=12)
-        plt.legend(title=color_by.capitalize(), bbox_to_anchor=(1.05, 1), loc='upper left')
+                   [f'{hour:02}' if hour in range(0, 10) else f'{hour}' for hour in hourly_counts.index], fontsize=20)
+        plt.legend(title=color_by.capitalize(), bbox_to_anchor=(1.05, 1), loc='upper left',fontsize=20)
         plt.tight_layout()
         st.pyplot(plt)
 
