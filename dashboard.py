@@ -41,7 +41,7 @@ def main():
             percent_m = (grouped_data['m'] / total_users) * 100
             percent_f = (grouped_data['f'] / total_users) * 100
 
-            plt.figure(figsize=(10, 6))
+            plt.figure(figsize=(15, 6))
 
             # Get the categories as x-axis labels
             categories = grouped_data.index
