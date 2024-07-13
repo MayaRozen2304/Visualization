@@ -59,11 +59,12 @@ def main():
                 plt.text(i + bar_width, grouped_data.loc[category, 'f'] + 1,
                          f"{grouped_data.loc[category, 'f']} ({percent_f.loc[category]:.1f}%)", ha='center', va='bottom')
 
-            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users')
-            plt.xlabel(selected_column.capitalize())
-            plt.ylabel('Number of Users')
-            plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45)
-            plt.legend()
+            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=20)
+            plt.xlabel(selected_column.capitalize(), fontsize=16)
+            plt.ylabel('Number of Users', fontsize=16)
+            plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45,fontsize=12)
+            plt.yticks(fontsize=12)
+            plt.legend(fontsize=14)
             plt.tight_layout()
             st.pyplot(plt)
         else:
