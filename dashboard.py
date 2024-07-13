@@ -10,7 +10,13 @@ import sys
 plt.switch_backend('Agg')
 
 def main():
-    data = pd.read_csv("okcupid_profiles.csv")
+    zip_file_path = 'okcupid_profiles.zip'
+    with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+        zip_ref.extractall('extracted_folder')  # Extract to a folder named 'extracted_folder'
+    csv_file_path = 'extracted_folder/okcupid_profiles.csv'
+    data = pd.read_csv(csv_file_path)
+    
+    # data = pd.read_csv("okcupid_profiles.csv")
     st.title('Data Visualization Final Project - OkCupid Users Insights Dashboard')
 
     # Sidebar
