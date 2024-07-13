@@ -94,22 +94,52 @@ def main():
 
     elif tab == "User Intents":
 
+        # Aggregate essays into a single profile string
         data["Profile"] = data[["essay0", "essay1", "essay2", "essay3", "essay4",
                                 "essay5", "essay6", "essay7", "essay8", "essay9"]].astype(str).agg(' '.join, axis=1)
         text = ' '.join(data["Profile"].astype(str))
-
-        specific_words = ["kind", "funny", "intelligent", "casual", "hook", "love",
-                          "fun", "adventurous", "ambitious", "honest", "loyal"]
-
+    
+        # Streamlit inputs
+        specific_words_input = st.text_input(
+            "Enter specific words separated by commas (e.g., kind, funny, intelligent):",
+            "kind, funny, intelligent, casual, hook, love, fun, adventurous, ambitious, honest, loyal"
+        )
+        specific_words = [word.strip() for word in specific_words_input.split(',')]
+    
+        max_words = st.slider("Max number of words in word cloud:", min_value=1, max_value=50, value=11)
+    
+        # Calculate word frequencies
         word_freq = {word: text.count(word) for word in specific_words}
-        wordcloud = WordCloud(max_words=11, background_color="white").generate_from_frequencies(word_freq)
-
+    
+        # Generate word cloud
+        wordcloud = WordCloud(max_words=max_words, background_color="white").generate_from_frequencies(word_freq)
+    
+        # Display word cloud
         plt.figure(figsize=(8, 5))
         plt.title('Word Frequency in User Descriptions', pad=20)  # Adjust 'pad' for title spacing
         plt.imshow(wordcloud, interpolation='bilinear')
         plt.axis("off")
         plt.tight_layout()
         st.pyplot(plt)
+
+
+    
+        # data["Profile"] = data[["essay0", "essay1", "essay2", "essay3", "essay4",
+        #                         "essay5", "essay6", "essay7", "essay8", "essay9"]].astype(str).agg(' '.join, axis=1)
+        # text = ' '.join(data["Profile"].astype(str))
+
+        # specific_words = ["kind", "funny", "intelligent", "casual", "hook", "love",
+        #                   "fun", "adventurous", "ambitious", "honest", "loyal"]
+
+        # word_freq = {word: text.count(word) for word in specific_words}
+        # wordcloud = WordCloud(max_words=11, background_color="white").generate_from_frequencies(word_freq)
+
+        # plt.figure(figsize=(8, 5))
+        # plt.title('Word Frequency in User Descriptions', pad=20)  # Adjust 'pad' for title spacing
+        # plt.imshow(wordcloud, interpolation='bilinear')
+        # plt.axis("off")
+        # plt.tight_layout()
+        # st.pyplot(plt)
 
     # elif tab == "User Intents":
 
