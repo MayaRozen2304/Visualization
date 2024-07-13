@@ -122,7 +122,7 @@ def main():
 
         hourly_counts = data.groupby(['hour', color_by]).size().unstack(fill_value=0)
 
-        plt.figure(figsize=(12, 8))
+        plt.figure(figsize=(20, 10))
 
         for category in hourly_counts.columns:
             plt.plot(hourly_counts.index, hourly_counts[category], marker='o', linestyle='-', linewidth=2,
