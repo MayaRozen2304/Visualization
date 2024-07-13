@@ -66,7 +66,7 @@ def main():
             #     plt.text(i + bar_width, grouped_data.loc[category, 'f'] + 1,
             #              f"{grouped_data.loc[category, 'f']} ({percent_f.loc[category]:.1f}%)", ha='center', va='bottom',fontsize=20)
 
-            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=40)
+            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=30)
             plt.xlabel(selected_column.capitalize(), fontsize=20)
             plt.ylabel('Number of Users', fontsize=20)
             plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45,fontsize=20)
