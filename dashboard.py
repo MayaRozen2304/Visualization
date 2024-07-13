@@ -62,7 +62,7 @@ def main():
             plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=40)
             plt.xlabel(selected_column.capitalize(), fontsize=20)
             plt.ylabel('Number of Users', fontsize=20)
-            plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45,fontsize=12)
+            plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45,fontsize=20)
             plt.yticks(fontsize=20)
             plt.legend(fontsize=20)
             plt.tight_layout()
