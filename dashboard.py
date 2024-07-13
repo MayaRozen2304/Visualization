@@ -41,7 +41,7 @@ def main():
             percent_m = (grouped_data['m'] / total_users) * 100
             percent_f = (grouped_data['f'] / total_users) * 100
 
-            plt.figure(figsize=(20, 15))
+            plt.figure(figsize=(20, 10))
 
             # Get the categories as x-axis labels
             categories = grouped_data.index
@@ -59,12 +59,12 @@ def main():
                 plt.text(i + bar_width, grouped_data.loc[category, 'f'] + 1,
                          f"{grouped_data.loc[category, 'f']} ({percent_f.loc[category]:.1f}%)", ha='center', va='bottom')
 
-            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=20)
-            plt.xlabel(selected_column.capitalize(), fontsize=16)
+            plt.title(f'{selected_column.capitalize()} Distribution by Gender among OkCupid Users',fontsize=40)
+            plt.xlabel(selected_column.capitalize(), fontsize=20)
             plt.ylabel('Number of Users', fontsize=16)
             plt.xticks([i + bar_width / 2 for i in x], categories, rotation=45,fontsize=12)
-            plt.yticks(fontsize=12)
-            plt.legend(fontsize=14)
+            plt.yticks(fontsize=20)
+            plt.legend(fontsize=20)
             plt.tight_layout()
             st.pyplot(plt)
         else:
